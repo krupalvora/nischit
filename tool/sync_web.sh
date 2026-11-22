@@ -4,6 +4,8 @@
 set -euo pipefail
 here="$(cd "$(dirname "$0")/.." && pwd)"
 site="$(cd "$here/.." && pwd)"
+# Standalone checkout next to the site repo (irctc/nischit-mobile + irctc/nishchit).
+if [[ ! -f "$site/index.html" && -f "$site/nishchit/index.html" ]]; then site="$site/nishchit"; fi
 dest="$here/assets/web"
 
 rm -rf "$dest"

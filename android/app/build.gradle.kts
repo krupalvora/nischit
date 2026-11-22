@@ -30,6 +30,15 @@ android {
         versionName = flutter.versionName
     }
 
+    // Compress native libs (libflutter.so, libapp.so) inside the APK. The APK is downloaded
+    // straight from the website, so download size matters more than the small startup win of
+    // uncompressed libs. Roughly halves the APK.
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
