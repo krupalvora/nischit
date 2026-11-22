@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "io.github.krupalvora.nishchit"
-    compileSdk = 37
+    compileSdk = 37 // flutter_local_notifications needs 37+
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
