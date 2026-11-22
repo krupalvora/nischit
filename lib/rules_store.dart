@@ -1,5 +1,5 @@
 // Where the app's IRCTC rules come from, newest valid copy wins:
-//   1. the hosted file  https://krupalvora.github.io/nischit/irctc-rules.json  (refreshed at launch)
+//   1. the hosted file  https://krupalvora.github.io/nishchit/irctc-rules.json  (refreshed at launch)
 //   2. the last good hosted copy, cached on the phone (works offline)
 //   3. the copy bundled in the app (first launch with no network)
 // A file that fails to parse, or has an unknown schema, is ignored and the previous rules stay.
