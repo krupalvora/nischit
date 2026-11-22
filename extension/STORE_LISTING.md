@@ -12,7 +12,7 @@ Travel
 ## Description
 Nishchit finds berths left vacant after the reservation chart is prepared and stitches them into a seated journey, even across coaches.
 
-The chart is public on IRCTC's website, but IRCTC doesn't let other websites read it directly. This extension fetches it from your own browser when you search on https://krupalvora.github.io/nischit/ so the results are live and nothing goes through a third-party server.
+The chart is public on IRCTC's website, but IRCTC doesn't let other websites read it directly. This extension fetches it from your own browser when you search on https://krupalvora.github.io/nishchit/ so the results are live and nothing goes through a third-party server.
 
 What it does
 • Reads only the public chart for the train you search: route, coach list and berth vacancy.
@@ -33,7 +33,7 @@ Fetch the public train reservation chart from the user's browser for the Nishchi
 ## Permission justifications
 - **Host permission www.irctc.co.in**: to fetch the public reservation chart (train schedule, train composition, coach composition) that the user searches for on Nishchit.
 - **scripting**: when IRCTC only answers requests from its own chart page, the extension makes that same chart request from an IRCTC chart tab.
-- **Content script on krupalvora.github.io/nischit**: to receive chart requests from the Nishchit page and return the results.
+- **Content script on krupalvora.github.io/nishchit**: to receive chart requests from the Nishchit page and return the results.
 
 ## Remote code
 No. All code is in the package.
@@ -42,4 +42,4 @@ No. All code is in the package.
 Does not collect or use user data.
 
 ## Privacy policy URL
-https://krupalvora.github.io/nischit/privacy.html
+https://krupalvora.github.io/nishchit/privacy.html

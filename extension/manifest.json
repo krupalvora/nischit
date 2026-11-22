@@ -4,7 +4,7 @@
   "short_name": "Nishchit",
   "version": "1.2.1",
   "description": "Lets the Nishchit site read the public train reservation chart from your own browser to find berths left vacant.",
-  "homepage_url": "https://krupalvora.github.io/nischit/",
+  "homepage_url": "https://krupalvora.github.io/nishchit/",
   "minimum_chrome_version": "116",
   "icons": {
     "16": "icons/icon16.png",
@@ -26,7 +26,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://krupalvora.github.io/nischit/*", "https://krupalvora.github.io/nishchit/*", "http://localhost:5173/*", "http://127.0.0.1:5173/*"],
+      "matches": ["https://krupalvora.github.io/nishchit/*", "http://localhost:5173/*", "http://127.0.0.1:5173/*"],
       "js": ["content.js"],
       "run_at": "document_start"
     }

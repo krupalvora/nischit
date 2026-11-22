@@ -13,7 +13,7 @@ Indian Railway Catering and Tourism Corporation (IRCTC)
 [and / or] Centre for Railway Information Systems (CRIS)
 
 **From:** Krupal Vora, developer of *Nishchit*
-krupalvora00@gmail.com · +91 98XXX XXXXX · https://krupalvora.github.io/nischit/
+krupalvora00@gmail.com · +91 98XXX XXXXX · https://krupalvora.github.io/nishchit/
 
 **Date:** 22 November 2026
 
@@ -88,7 +88,7 @@ safeguards. Thank you for your time and for considering this request.
 Sincerely,
 Krupal Vora
 krupalvora00@gmail.com · +91 98XXX XXXXX
-https://krupalvora.github.io/nischit/
+https://krupalvora.github.io/nishchit/
 
 ---
 
