@@ -20,6 +20,7 @@ import { initStickySide } from './ui/stickySide.js';
 async function bootstrap() {
   hydrateIcons();
   initStickySide();
+  placeExtensionNotice();
   document.getElementById('hard-refresh')?.addEventListener('click', (e) => hardRefresh(e.currentTarget));
 
   const today = toISODate(new Date());
@@ -235,6 +236,18 @@ function showExtensionState(via) {
     }
     notice?.removeAttribute('hidden');
   }
+}
+
+/** Wide screens: the notice heads the right column. One column: it sits in the hero, above the form. */
+function placeExtensionNotice() {
+  const notice = document.getElementById('extension-notice');
+  const main = document.querySelector('.app__main');
+  const title = document.getElementById('page-title');
+  if (!notice || !main || !title) return;
+  const wide = window.matchMedia('(min-width: 1024px)');
+  const place = () => (wide.matches ? main.prepend(notice) : title.after(notice));
+  wide.addEventListener('change', place);
+  place();
 }
 
 function isLocalHost() {
