@@ -13,14 +13,14 @@ One codebase (Manifest V3 WebExtension). Packaged by `npm run extension:zip` for
 
 ## Install
 
-**Download page:** https://krupalvora.github.io/nishchit/install.html (zip + steps for every browser and OS; built by `npm run extension:zip` into `downloads/`, which is committed).
+**Download page:** https://krupalvora.github.io/nischit/install.html (zip + steps for every browser and OS; built by `npm run extension:zip` into `downloads/`, which is committed).
 
 **From the Chrome Web Store:** _(link here once published)_
 
 **Unpacked (developers):**
 1. Open `chrome://extensions`, turn on **Developer mode**.
 2. **Load unpacked** → choose this `extension/` folder.
-3. Open https://krupalvora.github.io/nishchit/ (or `npm start` → http://localhost:5173) and search.
+3. Open https://krupalvora.github.io/nischit/ (or `npm start` → http://localhost:5173) and search.
    The result card says **Live · your browser**.
 
 ## How it works
@@ -55,7 +55,7 @@ Allowed page origins live in two places that must agree (a test checks this):
 2. `npm run extension:zip`, then **New item** → upload the zip.
 3. Store listing: use [STORE_LISTING.md](STORE_LISTING.md). Upload at least one 1280×800
    screenshot of a Nishchit result page.
-4. Privacy: policy URL `https://krupalvora.github.io/nishchit/privacy.html`. Answer the
+4. Privacy: policy URL `https://krupalvora.github.io/nischit/privacy.html`. Answer the
    data-usage form as "does not collect user data". Permission justifications are in
    STORE_LISTING.md.
 5. Submit for review (usually a few days).

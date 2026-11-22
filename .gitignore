@@ -1,2 +1,12 @@
 tests/.benchmark.log
 dist/
+.DS_Store
+*.log
+.tokensave/
+
+# local dev only, never deployed
+.irctc-session
+.irctc-dumps/
+node_modules/
+.chrome-irctc/
+.wrangler/

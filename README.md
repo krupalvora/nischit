@@ -12,7 +12,8 @@ npm test         # node --test, no dependencies
 
 ## Deploy
 
-Nishchit ships inside the portfolio repo at `nishchit/` and is served at `<site>/nishchit/`.
+Nishchit lives in its own repo (`krupalvora/nischit`) and GitHub Pages serves it as a project site at
+`https://krupalvora.github.io/nischit/`, under the portfolio domain (`krupalvora/krupalvora.github.io`).
 Every path is relative, so it works under any base path. **There is no demo or simulated
 data**: every search reads the real chart from IRCTC through the proxy in `worker/`.
 

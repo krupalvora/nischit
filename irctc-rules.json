@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "revision": 1,
-  "comment": "Read by the Nishchit mobile app at launch (https://krupalvora.github.io/nishchit/irctc-rules.json). Edit, bump revision, push: installed apps pick it up on their next launch. Keep in sync with extension/rules.js. Host must stay on irctc.co.in (the app refuses anything else).",
+  "comment": "Read by the Nishchit mobile app at launch (https://krupalvora.github.io/nischit/irctc-rules.json). Edit, bump revision, push: installed apps pick it up on their next launch. Keep in sync with extension/rules.js. Host must stay on irctc.co.in (the app refuses anything else).",
   "origin": "https://www.irctc.co.in",
   "chartsPage": "https://www.irctc.co.in/online-charts/",
   "routes": [

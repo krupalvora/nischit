@@ -20,7 +20,7 @@ const TAB_LOAD_TIMEOUT_MS = 30000;
 const PREFER_TAB_FOR_MS = 10 * 60 * 1000;
 const CLOSE_OWN_TAB_AFTER_MS = 2 * 60 * 1000;
 
-const WELCOME_URL = 'https://krupalvora.github.io/nishchit/?welcome=1';
+const WELCOME_URL = 'https://krupalvora.github.io/nischit/?welcome=1';
 
 // First install: open Nishchit so the user sees it worked ("You're all set") without having
 // to find their way back.

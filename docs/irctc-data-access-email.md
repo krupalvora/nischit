@@ -32,4 +32,4 @@ Thank you for your time.
 Sincerely,
 Krupal Vora
 krupalvora00@gmail.com · +91 98XXX XXXXX
-https://krupalvora.github.io/nishchit/
+https://krupalvora.github.io/nischit/

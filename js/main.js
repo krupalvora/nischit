@@ -1,4 +1,5 @@
 import { CONFIG } from './config.js';
+import { notifySearchDone, notifySearchStarted, summarizeError, summarizeResult } from './app/notify.js';
 import { buildSearchResult } from './app/search.js';
 import { createExtensionFetch, detectExtension, IRCTC_BASE, isNativeApp } from './data/extensionBridge.js';
 import { IrctcProvider } from './data/irctcProvider.js';
@@ -50,6 +51,7 @@ async function bootstrap() {
 
     form.setBusy(true);
     results.renderLoading(query);
+    notifySearchStarted();
     try {
       const train = await provider.getTrain(query.train, { signal: controller.signal });
       if (!train) throw new ProviderError(`IRCTC has no train numbered ${query.train}.`, 'not-found', { via: provider.via, hint: 'Check the train number.' });
@@ -66,11 +68,16 @@ async function bootstrap() {
           else results.renderLoading(query, { done, total });
         },
       });
-      if (!controller.signal.aborted) results.render(view(chart));
+      if (!controller.signal.aborted) {
+        const finished = view(chart);
+        results.render(finished);
+        notifySearchDone(summarizeResult(finished));
+      }
     } catch (err) {
       if (err?.name === 'AbortError') return;
       if (err?.code !== 'needs-extension') reportError(err, { query });
       results.renderError(err);
+      notifySearchDone(summarizeError(err, query));
     } finally {
       if (inFlight === controller) {
         inFlight = null;
@@ -250,13 +257,17 @@ function showMobileNotice(notice) {
     h('span', {}, navigator.share ? 'Send link to my computer' : 'Copy link'),
   );
   notice.classList.add('extension-notice--mobile');
+  const android = /Android/i.test(navigator.userAgent);
   notice.replaceChildren(
-    h('strong', { class: 'extension-notice__title' }, 'Open Nishchit on a laptop or desktop'),
+    h('strong', { class: 'extension-notice__title' }, android ? 'Get the Nishchit Android app' : 'Open Nishchit on a laptop or desktop'),
     h(
       'span',
       {},
-      'Nishchit reads the live chart through a free browser extension, and phones and tablets can’t run extensions. You can look around here; to search, open this page in Chrome, Edge or Brave on a computer.',
+      android
+        ? 'Phone browsers can’t run the extension Nishchit needs, but the Android app can read the live chart. Download it and allow installing from your browser when Android asks (Play Store version coming soon). Or open this page on a computer.'
+        : 'Nishchit reads the live chart through a free browser extension, and phones and tablets can’t run extensions. You can look around here; to search, open this page in Chrome, Edge or Brave on a computer.',
     ),
+    ...(android ? [h('a', { class: 'btn btn--primary', href: CONFIG.androidApkUrl, download: '' }, icon('download'), h('span', {}, 'Download Android app (APK)'))] : []),
     h('span', { class: 'extension-notice__actions' }, shareBtn, h('a', { href: CONFIG.chartsUrl, target: '_blank', rel: 'noopener' }, 'Check the chart on IRCTC')),
   );
   notice.hidden = false;

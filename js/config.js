@@ -39,7 +39,9 @@ export const CONFIG = Object.freeze({
    * installUrl is the download + instructions page (install.html), for every browser.
    */
   extension: {
-    installUrl: 'https://krupalvora.github.io/nishchit/install.html',
+    installUrl: 'https://krupalvora.github.io/nischit/install.html',
     requestTimeoutMs: 30000, // the first call may wait for an IRCTC tab to load
   },
+  /** Sideload build of the Android app, until it is on the Play Store. Rebuild + copy on release. */
+  androidApkUrl: 'downloads/nischit-android.apk',
 });

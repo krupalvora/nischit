@@ -16,7 +16,7 @@
  */
 
 const UPSTREAM = 'https://www.irctc.co.in';
-const USER_AGENT = 'Nishchit/1.0 (+https://krupalvora.github.io/nishchit/)';
+const USER_AGENT = 'Nishchit/1.0 (+https://krupalvora.github.io/nischit/)';
 const BLOCK_BACKOFF_S = 120;
 const TTL = { schedule: 24 * 3600, chartNotReady: 5 * 60, chart: 10 * 60, coach: 10 * 60 };
 
