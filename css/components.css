@@ -203,11 +203,6 @@
   background: var(--field);
 }
 
-.select--compact {
-  min-height: 48px;
-  font-size: 15px;
-}
-
 /* Matches the compact pills it sits beside (Class row). */
 .input--compact {
   min-height: 0;
@@ -216,6 +211,15 @@
   font-size: 13px;
   font-weight: 600;
   text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Spinner arrows push the centred number off-centre; arrow keys still step the value. */
+.input--compact::-webkit-inner-spin-button,
+.input--compact::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .stations {

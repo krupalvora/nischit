@@ -147,6 +147,8 @@ export class SearchForm {
       this.showError(null);
     });
     this.els.to.addEventListener('change', () => this.showError(null));
+    this.els.party.addEventListener('input', () => this.showError(null));
+    this.els.party.addEventListener('focus', () => this.els.party.select());
     this.els.dates.addEventListener('change', () => this.renderHint());
     this.root.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -203,7 +205,7 @@ export class SearchForm {
 
   validate() {
     if (!/^\d{5}$/.test(this.els.train.value)) return 'Enter a 5-digit train number.';
-    if (!this.train) return 'Pick a train from the list to continue.';
+    if (!this.train) return 'Wait for the train name to appear, or check the number.';
     if (!this.els.from.value) return 'Select your boarding station.';
     if (!this.els.to.value) return 'Select your destination station.';
     const party = Number(this.els.party.value);

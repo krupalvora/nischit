@@ -57,11 +57,11 @@
           <p id="train-status" class="field__status" aria-live="polite"></p>
         </div>
 
-        <fieldset class="field">
-          <legend class="field__label"><span data-icon="calendar"></span>Journey date</legend>
-          <div id="date-options" class="segmented segmented--3" role="radiogroup"></div>
+        <div class="field">
+          <span id="date-label" class="field__label"><span data-icon="calendar"></span>Journey date</span>
+          <div id="date-options" class="segmented segmented--3" role="radiogroup" aria-labelledby="date-label"></div>
           <p class="field__help">Date the train leaves its source station.</p>
-        </fieldset>
+        </div>
 
         <div class="stations">
             <div class="field">
