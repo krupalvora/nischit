@@ -269,6 +269,17 @@ button:disabled {
   gap: var(--s-1);
 }
 
+.site-footer__credit {
+  margin-top: var(--s-2);
+}
+
+/* The app keeps the credit but not the outbound portfolio link (see .is-app above). */
+.is-app .site-footer__credit a {
+  pointer-events: none;
+  color: inherit;
+  text-decoration: none;
+}
+
 .site-footer strong {
   color: var(--ink-2);
   font-weight: 600;
