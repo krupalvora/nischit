@@ -98,6 +98,9 @@
   .app__side .select {
     min-height: 48px;
   }
+  .app__side .input--compact {
+    min-height: 0; /* keep the Class-pill height from components.css */
+  }
   .app__side .segmented--3 .segmented__opt span {
     min-height: 50px;
   }
@@ -110,9 +113,6 @@
   }
   .app__side .segmented--compact .segmented__opt {
     flex: 1 1 0;
-  }
-  .app__side .field--narrow {
-    min-width: 116px;
   }
   .app__side .hint {
     padding: 10px 12px;

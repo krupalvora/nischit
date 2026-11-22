@@ -8,7 +8,7 @@ import { DEFAULT_ENGINE_OPTIONS } from './domain/engine.js';
 export const CONFIG = Object.freeze({
   chartRules: DEFAULT_CHART_RULES,
   engine: DEFAULT_ENGINE_OPTIONS,
-  partySizes: [1, 2, 3, 4],
+  maxParty: 4,
 
   /**
    * IRCTC data. There is no simulated/demo data: every search hits IRCTC.

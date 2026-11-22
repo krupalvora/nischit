@@ -10,7 +10,7 @@ import { formatDateTime, formatDay, plural } from './format.js';
  * the provider (train lookup) and the onSubmit callback.
  */
 export class SearchForm {
-  constructor({ root, provider, today, partySizes, chartRules, onError = () => {}, onSubmit }) {
+  constructor({ root, provider, today, maxParty, chartRules, onError = () => {}, onSubmit }) {
     this.root = root;
     this.provider = provider;
     this.today = today;
@@ -28,19 +28,21 @@ export class SearchForm {
       from: $('#from-select'),
       to: $('#to-select'),
       classes: $('#class-options'),
-      party: $('#party-select'),
+      party: $('#party-input'),
       hint: $('#chart-hint .hint__text'),
       error: $('#form-error'),
       submit: root.querySelector('button[type="submit"]'),
     };
 
-    this.renderStaticOptions(partySizes);
+    this.maxParty = maxParty;
+    this.els.party.max = String(maxParty);
+    this.renderStaticOptions();
     this.bind();
   }
 
   /* ---------------------------- rendering ---------------------------- */
 
-  renderStaticOptions(partySizes) {
+  renderStaticOptions() {
     const base = fromISODate(this.today);
     const days = [
       ['Yesterday', addDays(base, -1)],
@@ -57,11 +59,6 @@ export class SearchForm {
     replaceChildren(
       this.els.classes,
       CLASS_FILTERS.map((cls) => radio('cls', cls, cls === 'all', cls === 'all' ? 'All' : cls, CLASSES[cls]?.label)),
-    );
-
-    replaceChildren(
-      this.els.party,
-      partySizes.map((n) => h('option', { value: String(n) }, plural(n, 'traveller'))),
     );
   }
 
@@ -205,6 +202,10 @@ export class SearchForm {
     if (!this.train) return 'Pick a train from the list to continue.';
     if (!this.els.from.value) return 'Select your boarding station.';
     if (!this.els.to.value) return 'Select your destination station.';
+    const party = Number(this.els.party.value);
+    if (!Number.isInteger(party) || party < 1 || party > this.maxParty) {
+      return `Travellers must be a whole number from 1 to ${this.maxParty}.`;
+    }
     return null;
   }
 

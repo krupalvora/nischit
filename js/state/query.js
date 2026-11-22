@@ -3,6 +3,7 @@
  * so results are shareable and the back button works.
  *   ?train=19017&date=2026-11-21&from=BVI&to=ANND&cls=all&party=1
  */
+import { CONFIG } from '../config.js';
 import { fromISODate } from '../domain/time.js';
 
 export const CLASS_FILTERS = ['all', 'SL', '3A', '2A'];
@@ -37,7 +38,7 @@ export function queryFromParams(params, today) {
   if (CLASS_FILTERS.includes(cls)) q.cls = cls;
 
   const party = Number(params.get('party'));
-  if (Number.isInteger(party) && party >= 1 && party <= 4) q.party = party;
+  if (Number.isInteger(party) && party >= 1 && party <= CONFIG.maxParty) q.party = party;
   return q;
 }
 

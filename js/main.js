@@ -35,7 +35,7 @@ async function bootstrap() {
     root: document.getElementById('search-form'),
     provider,
     today,
-    partySizes: CONFIG.partySizes,
+    maxParty: CONFIG.maxParty,
     chartRules: CONFIG.chartRules,
     onError: (err, context) => {
       if (err?.code !== 'needs-extension') reportError(err, context);

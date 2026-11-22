@@ -98,6 +98,7 @@
 .field__label {
   display: inline-flex;
   align-items: center;
+  height: 18px; /* same with or without an icon, so labels in a row line up */
   gap: 7px;
   font-family: var(--mono);
   font-size: 12px;
@@ -207,12 +208,23 @@
   font-size: 15px;
 }
 
+/* Matches the compact pills it sits beside (Class row). */
+.input--compact {
+  min-height: 0;
+  height: var(--control-compact, 40px);
+  padding: 0 var(--s-3);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .stations {
   display: grid;
   gap: var(--s-4);
 }
 
 .field-row {
+  --control-compact: 40px; /* Class pills and Travellers input share this height */
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--s-4);
@@ -220,7 +232,7 @@
 }
 
 .field--narrow {
-  min-width: 128px;
+  width: 88px;
 }
 
 /* Segmented control -> row of pills (Today / Tomorrow / class) */
@@ -305,7 +317,8 @@
 }
 
 .segmented--compact .segmented__opt span {
-  min-height: 40px;
+  min-height: 0;
+  height: var(--control-compact, 40px);
   font-size: 13px;
 }
 

@@ -83,15 +83,13 @@
         </div>
 
         <div class="field-row">
-          <fieldset class="field">
-            <legend class="field__label">Class</legend>
-            <div id="class-options" class="segmented segmented--compact" role="radiogroup"></div>
-          </fieldset>
+          <div class="field">
+            <span id="class-label" class="field__label">Class</span>
+            <div id="class-options" class="segmented segmented--compact" role="radiogroup" aria-labelledby="class-label"></div>
+          </div>
           <div class="field field--narrow">
-            <label class="field__label" for="party-select"><span data-icon="users"></span>Travellers</label>
-            <div class="select-wrap">
-              <select id="party-select" name="party" class="select select--compact"></select>
-            </div>
+            <label class="field__label" for="party-input"><span data-icon="users"></span>Travellers</label>
+            <input id="party-input" name="party" type="number" inputmode="numeric" min="1" max="4" step="1" value="1" required class="input input--compact" />
           </div>
         </div>
 
