@@ -60,16 +60,13 @@
     align-items: start;
   }
 
+  /* No inner scrollbar: the column scrolls with the page. When it fits the window it sticks under
+     the header; when it is taller, js/ui/stickySide.js sets a negative --side-top so it scrolls
+     until its bottom (the Check vacancy button) is in view and then sticks there. */
   .app__side {
     position: sticky;
-    top: var(--header-h);
-    max-height: calc(100vh - var(--header-h));
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
-    /* room for the search card's shadow inside the scroll box */
-    padding: var(--s-5) 14px var(--s-6);
-    margin-inline: -14px;
+    top: var(--side-top, var(--header-h));
+    padding: var(--s-5) 0 var(--s-6);
   }
 
   .app__side .hero {

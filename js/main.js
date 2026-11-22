@@ -11,6 +11,7 @@ import { h, hydrateIcons, icon } from './ui/dom.js';
 import { hardRefresh } from './ui/hardRefresh.js';
 import { createResultsView } from './ui/results.js';
 import { SearchForm } from './ui/searchForm.js';
+import { initStickySide } from './ui/stickySide.js';
 
 /**
  * Composition root.
@@ -18,6 +19,7 @@ import { SearchForm } from './ui/searchForm.js';
  */
 async function bootstrap() {
   hydrateIcons();
+  initStickySide();
   document.getElementById('hard-refresh')?.addEventListener('click', (e) => hardRefresh(e.currentTarget));
 
   const today = toISODate(new Date());
@@ -222,6 +224,15 @@ function showExtensionState(via) {
     introLine.textContent = 'Extension connected: charts load live from your browser.';
     introLine.hidden = false;
   } else if (via === 'needs-extension') {
+    // Set by the old /nishchit/ redirect: an extension older than 1.2.0 is installed, but it only
+    // runs on the old address, so ask for an update instead of an install.
+    const stale = params.get('oldext');
+    if (stale && notice) {
+      notice.replaceChildren(
+        document.createTextNode(`Your Nishchit extension (v${stale}) is out of date and can't read charts on this address. `),
+        h('a', { href: 'install.html' }, 'Update the extension \u2192'),
+      );
+    }
     notice?.removeAttribute('hidden');
   }
 }
