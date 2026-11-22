@@ -125,8 +125,12 @@ export class SearchForm {
     this.els.error.hidden = !message;
   }
 
+  /**
+   * Marks a search as running. The button stays clickable on purpose: submitting a changed
+   * selection cancels the running search and starts the new one (see search() in main.js).
+   */
   setBusy(busy) {
-    this.els.submit.disabled = busy;
+    this.els.submit.setAttribute('aria-busy', String(busy));
   }
 
   /* ----------------------------- behaviour ---------------------------- */

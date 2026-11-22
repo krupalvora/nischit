@@ -29,7 +29,8 @@ async function bootstrap() {
   if (via) console.info(`[nishchit] IRCTC data via ${via}`);
   showExtensionState(via);
 
-  let inFlight = null;
+  let inFlight = null; // AbortController of the running search
+  let inFlightKey = null; // its query, as URL params, to spot a repeat click
 
   const form = new SearchForm({
     root: document.getElementById('search-form'),
@@ -42,15 +43,20 @@ async function bootstrap() {
       results.renderError(err); // full card: hint, IRCTC link, technical details
     },
     onSubmit: (query) => {
+      // Same selection while it's still loading (double tap, impatient click): keep going
+      // instead of throwing away the coaches already fetched. A changed selection restarts.
+      if (inFlight && inFlightKey === queryToParams(query).toString()) return;
       pushQuery(query);
       search(query);
     },
   });
 
   async function search(query) {
+    // A new search always wins: stop the running one (pending IRCTC calls and the coach loop).
     inFlight?.abort();
     const controller = new AbortController();
     inFlight = controller;
+    inFlightKey = queryToParams(query).toString();
 
     form.setBusy(true);
     results.renderLoading(query);
@@ -77,13 +83,14 @@ async function bootstrap() {
         notifySearchDone(summarizeResult(finished));
       }
     } catch (err) {
-      if (err?.name === 'AbortError') return;
+      if (err?.name === 'AbortError' || controller.signal.aborted) return; // superseded: say nothing
       if (err?.code !== 'needs-extension') reportError(err, { query });
       results.renderError(err);
       notifySearchDone(summarizeError(err, query));
     } finally {
       if (inFlight === controller) {
         inFlight = null;
+        inFlightKey = null;
         form.setBusy(false);
       }
     }
