@@ -74,16 +74,6 @@
     gap: var(--s-3);
   }
 
-  .app__side .hero__title {
-    font-size: 30px;
-  }
-  .app__side .hero__title br {
-    display: none;
-  }
-  .app__side .hero__title .accent::before {
-    content: ' ';
-  }
-
   /* The intro panel on the right carries the explanation, so the whole form fits a laptop
      screen without scrolling. */
   .app__side .hero__lead {
