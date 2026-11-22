@@ -116,6 +116,11 @@ export function createResultsView({ root, intro = null }) {
           h('a', { class: 'btn btn--primary', href: 'install.html' }, icon('download'), 'Install the extension'),
           h('button', { type: 'button', class: 'btn btn--ghost', onclick: (e) => hardRefresh(e.currentTarget) }, icon('refresh'), "I've installed it"),
         ),
+        h(
+          'p',
+          { class: 'install-card__foot' },
+          'Already installed it? Versions older than 1.2.1 don’t run on this address. Remove the old one and install the latest.',
+        ),
         h('p', { class: 'install-card__foot' }, 'Free, works in Chrome, Edge, Brave and Firefox. Or check the chart directly ', h('a', { href: CONFIG.chartsUrl, target: '_blank', rel: 'noopener' }, 'on IRCTC'), '.'),
       ),
     );
