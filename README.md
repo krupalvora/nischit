@@ -56,7 +56,7 @@ The `android/` and `ios/` folders are committed, so `tool/setup.sh` is only need
 ```sh
 ./tool/sync_web.sh             # refresh the offline copy of the site (assets/web/)
 flutter run                    # phone plugged in with USB debugging on, or an emulator
-flutter build apk --release    # build/app/outputs/flutter-apk/app-release.apk
+flutter build apk --release --target-platform android-arm,android-arm64   # phones only, ~15 MB (without the flag: ~22 MB)
 flutter test                   # rules validation tests
 ```
 
